@@ -1,7 +1,9 @@
-import java.awt.*;
+ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
+import javax.swing.border.TitledBorder;
+
 
 
 public class OnlineLibaryManagementSystem extends JFrame {
@@ -15,25 +17,32 @@ public class OnlineLibaryManagementSystem extends JFrame {
     public OnlineLibaryManagementSystem(){
         
         
-        this.setTitle("Online Libary Management System");
+        this.setTitle("");
         this.setSize(1024, 576);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocation(0,0);
-        JPanel mainP = (JPanel) this.getContentPane();
-        mainP.setLayout(new GridLayout(6,1));
+        
+        Font fontButton = new Font("Arial", Font.PLAIN, 16); 
+        Font fontText = new Font("Segoe UI Variable Display Semib", Font.BOLD, 14); 
+        Font fonttitle = new Font("Segoe UI Variable Display Semib", Font.BOLD, 16); 
+
+        JPanel mainP = new JPanel (new GridLayout(4,1));
 
         JPanel m1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
         TitleLabel = new  JLabel("Welcome to  Libary Management System");
+        TitleLabel.setFont(fonttitle);
         m1.add(TitleLabel);
         
         JPanel m2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
         userNameLabel = new JLabel("Username   ");
+        userNameLabel.setFont(fontText);
         userNameTextField = new JTextField(15);
         m2.add(userNameLabel);
         m2.add(userNameTextField);
         
         JPanel m3 = new JPanel(new FlowLayout(FlowLayout.CENTER));
         passwordLabel = new JLabel("Password   ");
+        passwordLabel.setFont(fontText);
         passwordTextField = new JPasswordField(15);
         m3.add(passwordLabel);
         m3.add(passwordTextField);
@@ -44,21 +53,31 @@ public class OnlineLibaryManagementSystem extends JFrame {
         
        JPanel m5 = new JPanel(new FlowLayout(FlowLayout.CENTER));
         LogInButton = new JButton("  Login  ");
+        LogInButton.setFont(fontButton);
         m5.add(LogInButton);
         
-       
-        JPanel m6 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+       JPanel m6 = new JPanel(new FlowLayout(FlowLayout.CENTER));
         ExitButton = new JButton("  Exit  ");
+        ExitButton.setFont(fontButton);
         m6.add(ExitButton);
+        
+       JPanel m7 = new JPanel(new GridLayout(2,1));
+       m7.add(m5);
+       m7.add(m6);
+
       
         mainP.add(m1);
         mainP.add(m2);
         mainP.add(m3);
         mainP.add(m4);
-        mainP.add(m5);
-        mainP.add(m6);
 
-
+            JPanel mainpanel = (JPanel) this.getContentPane();
+            TitledBorder title;
+            title = BorderFactory.createTitledBorder("Online Libary Management System");
+            title.setTitleFont(fonttitle);
+            mainpanel.setBorder(title);
+            mainpanel.add(mainP,BorderLayout.CENTER);
+            mainpanel.add(m7,BorderLayout.SOUTH);
 
         LogInButton.addActionListener(new LogInButtonAction());
         ExitButton.addActionListener(new ExitButtonAction());
@@ -74,8 +93,7 @@ public class OnlineLibaryManagementSystem extends JFrame {
 });
       this.setVisible(true);
       
-
-          
+         
     }
     
      public class LogInButtonAction implements ActionListener{
