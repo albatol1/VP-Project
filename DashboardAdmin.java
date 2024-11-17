@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 
 public class DashboardAdmin extends JFrame {
     
@@ -9,38 +10,47 @@ public class DashboardAdmin extends JFrame {
     
     public DashboardAdmin(){
 
-        this.setTitle("Dashboard Admin");
+        this.setTitle("");
         this.setSize(1024, 576);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocation(0,0);
-        JPanel mainP = (JPanel) this.getContentPane();
-        mainP.setLayout(new GridLayout(7,1));
+        Font fontButton = new Font("Arial", Font.PLAIN, 16); 
+        Font fonttitle = new Font("Segoe UI Variable Display Semib", Font.BOLD, 16); 
+
+        JPanel mainP = new JPanel(new GridLayout(7,1));
         
         AddButton = new JButton("     Add Book     ");
+        AddButton.setFont(fontButton);
         JPanel m1 = new JPanel(new FlowLayout());
         m1.add(AddButton);
 
         BorrowedButton = new JButton("Borrowed Book");
+        BorrowedButton.setFont(fontButton);
         JPanel m2 = new JPanel(new FlowLayout());
         m2.add(BorrowedButton);
         
         SearchButton = new JButton("  Search Book  ");
+        SearchButton.setFont(fontButton);
         JPanel m3 = new JPanel(new FlowLayout());
         m3.add(SearchButton);
         
         UpdateButton = new JButton("  Update Book  ");
+        UpdateButton.setFont(fontButton);
         JPanel m4 = new JPanel(new FlowLayout());
         m4.add(UpdateButton);
   
         AddMemberButton = new JButton("  Add Member  ");
+        AddMemberButton.setFont(fontButton);
         JPanel m5 = new JPanel(new FlowLayout());
         m5.add(AddMemberButton);
         
         UpdateMemberButton = new JButton("Update Member"); 
+        UpdateMemberButton.setFont(fontButton);
         JPanel m6 = new JPanel(new FlowLayout());
         m6.add(UpdateMemberButton);
         
         StatisticsButton = new JButton("Statistics Report");
+        StatisticsButton.setFont(fontButton);
         JPanel m7 = new JPanel(new FlowLayout());
         m7.add(StatisticsButton);
         
@@ -52,6 +62,12 @@ public class DashboardAdmin extends JFrame {
         mainP.add(m6);
         mainP.add(m7);
  
+         JPanel mainpanel = (JPanel) this.getContentPane();
+         TitledBorder title;
+         title = BorderFactory.createTitledBorder("Dashboard Admin");
+         title.setTitleFont(fonttitle);
+         mainpanel.setBorder(title);
+         mainpanel.add(mainP,BorderLayout.CENTER);
         this.setVisible(true);
 
         AddButton.addActionListener(new addBookButton());
