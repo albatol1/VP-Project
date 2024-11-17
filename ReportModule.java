@@ -16,14 +16,23 @@ public class ReportModule extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocation(0,0);
 
+        Font fontButton = new Font("Arial", Font.PLAIN, 16); 
+        Font fontText = new Font("Segoe UI Variable Display Semib", Font.BOLD, 14);
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
 
         JLabel reportLabel = new JLabel("Select Report Type:");
+        reportLabel.setFont(fontText);
+        
         String [] list = {"Library Activity", "Popular Books", "Member Statistics"};
         reportType = new JComboBox(list);
+        reportType.setFont(fontText);
+        
         generateReportButton = new JButton("Generate Report");
+        generateReportButton.setFont(fontButton);
+        
         backButton = new JButton("Back");
+        backButton.setFont(fontButton);
 
         panel.add(reportLabel);
         panel.add(reportType);
